@@ -42,3 +42,7 @@ mv ~/fedconfs/spotify-tui ~/.config
 mv ~/fedconfs/config /etc/xdg/waybar 
 mv ~/fedconfs/style.css /etc/xdg/waybar 
 mv ~/fedconfs/wp ~/ 
+
+# NOTE: for some reason in testing, alacritty did not like the default file in ~/.config/alacritty being replaced with fedconfs/alacritty/alacritty.yml
+# b/c of this, I recommend copy&pasting the text of the .yml file directly from the fedconfs version into the file already in ~/.config
+# if ~/.config/alacritty/alacritty.yml does not exist, check alacritty documentation for location of default alacritty.yml
