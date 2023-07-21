@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# clones the appropriate repo, bvanover/fedconfs && moves dnf.conf so that everything will be *much* quicker
+git clone https://github.com/bvanover/fedconfs
+rm /etc/dnf/dnf.conf 
+mv ~/fedconfs/dnf.conf /etc/dnf/
+
 # makes sure the sys is up to date before installing software
 dnf update -y
-
-# clones the appropriate repo, bvanover/fedconfs
-git clone https://github.com/bvanover/fedconfs
 
 # installs flakpak, Discord, Spotify, & Steam
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo -y
@@ -23,25 +25,22 @@ dnf install waybar-hyprland -y
 # installs spotify-tui & sublime-text
 dnf copr enable atim/spotify-tui -y
 dnf install spotify-tui -y
-rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg -y
+rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg 
 dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo -y
 dnf install sublime-text -y
 
 # deletes existing/premade directories and configurations and replaces them with fedconfs/
+rm -r ~/.config/alacritty 
+rm -r ~/.config/rofi 
+rm -r ~/.config/hypr 
+rm -r ~/.config/spotify-tui 
+rm /etc/xdg/waybar/style.css 
+rm /etc/xdg/waybar/config 
 
-rm -r ~/.config/alacritty -y
-rm -r ~/.config/rofi -y
-rm -r ~/.config/hypr -y
-rm -r ~/.config/spotify-tui -y
-rm /etc/dnf/dnf.conf -y 
-rm /etc/xdg/waybar/style.css -y
-rm /etc/xdg/waybar/config -y
-
-mv fedconfs/alacritty ~/.config/ -y
-mv fedconfs/hypr ~/.config/ -y
-mv fedconfs/rofi ~/.config/ -y
-mv fedconfs/spotify-tui ~/.config/ -y
-mv fedconfs/dnf.conf /etc/dnf/ -y
-mv fedconfs/config etc/xdg/waybar/ -y
-mv fedconfs/style.css etc/xdg/waybar/ -y
-mv fedconfs/wp ~/wp -y
+mv ~/fedconfs/alacritty ~/.config 
+mv ~/fedconfs/hypr ~/.config 
+mv ~/fedconfs/rofi ~/.config 
+mv ~/fedconfs/spotify-tui ~/.config 
+mv ~/fedconfs/config /etc/xdg/waybar 
+mv ~/fedconfs/style.css /etc/xdg/waybar 
+mv ~/fedconfs/wp ~/ 
