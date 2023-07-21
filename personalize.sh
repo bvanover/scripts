@@ -30,14 +30,12 @@ dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64
 dnf install sublime-text -y
 
 # deletes existing/premade directories and configurations and replaces them with fedconfs/
-rm -r ~/.config/alacritty 
 rm -r ~/.config/rofi 
 rm -r ~/.config/hypr 
 rm -r ~/.config/spotify-tui 
 rm /etc/xdg/waybar/style.css 
 rm /etc/xdg/waybar/config 
 
-mv ~/fedconfs/alacritty ~/.config 
 mv ~/fedconfs/hypr ~/.config 
 mv ~/fedconfs/rofi ~/.config 
 mv ~/fedconfs/spotify-tui ~/.config 
